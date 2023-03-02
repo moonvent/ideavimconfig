@@ -25,7 +25,7 @@ set NERDTree
 
 Plug 'preservim/nerdtree'
 
-map <leader>o :NERDFocus<CR>
+map <leader>o :NERDTreeFocus<CR>
 map <leader>e :NERDTreeToggle<CR>
 
 
@@ -33,5 +33,20 @@ Plug 'tpope/vim-commentary'
 
 set number relativenumber
 
+
+function! CommentOnOneButton()
+
+  if mode() == 'v'
+    execute getpos("'<") .. "," .. getpos("'>") .. "Commentary"
+
+  else
+    execute line('.') .. "," .. line('.') .. "Commentary"
+
+  endif
+
+endfunction
+
+
  
-map <leader>/ :'<,'>Commentary<CR>
+" map <leader>/ :'<,'>Commentary<CR>
+map <leader>/ :call CommentOnOneButton()<CR>

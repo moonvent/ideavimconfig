@@ -4,14 +4,14 @@ nnoremap <C-P> :bprev<CR>
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprev<CR>
 
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
+" set keymap=russian-jcukenwin
+" set iminsert=0
+" set imsearch=0
+" highlight lCursor guifg=NONE guibg=Cyan
 
-set hlsearch
+" set hlsearch
 
-nnoremap ,<space> :nohlsearch<CR>
+" nnoremap ,<space> :nohlsearch<CR>
 
 let mapleader = " "
 
@@ -35,18 +35,25 @@ set number relativenumber
 
 
 function! CommentOnOneButton()
+  " function for create comment
 
-  if mode() == 'v'
+  if mode() = 'v'
+    " if in visual mode and have selection, comment selection
     execute getpos("'<") .. "," .. getpos("'>") .. "Commentary"
 
   else
+    " if not in visual mode, comment one current string
     execute line('.') .. "," .. line('.') .. "Commentary"
 
   endif
 
 endfunction
 
-
- 
-" map <leader>/ :'<,'>Commentary<CR>
 map <leader>/ :call CommentOnOneButton()<CR>
+
+" map <leader>dra <Action>(Run)
+map <leader>dra <Action>(TriggerPlayInUnity)
+map <leader>drd <Action>(Debug)
+map <leader>dbt <Action>(ToggleLineBreakpoint)
+map <leader>da <Action>(Debugger.AddToWatch)
+

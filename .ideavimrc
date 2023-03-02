@@ -1,17 +1,15 @@
+" This script has a very small amout of function which work in it, main
+" functionality work in idea, other - rebinding
+
+
+set number relativenumber
+
+
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprev<CR>
-
-" set keymap=russian-jcukenwin
-" set iminsert=0
-" set imsearch=0
-" highlight lCursor guifg=NONE guibg=Cyan
-
-" set hlsearch
-
-" nnoremap ,<space> :nohlsearch<CR>
 
 let mapleader = " "
 
@@ -29,27 +27,7 @@ map <leader>o :NERDTreeFocus<CR>
 map <leader>e :NERDTreeToggle<CR>
 
 
-Plug 'tpope/vim-commentary'
-
-set number relativenumber
-
-
-function! CommentOnOneButton()
-  " function for create comment
-
-  if mode() = 'v'
-    " if in visual mode and have selection, comment selection
-    execute getpos("'<") .. "," .. getpos("'>") .. "Commentary"
-
-  else
-    " if not in visual mode, comment one current string
-    execute line('.') .. "," .. line('.') .. "Commentary"
-
-  endif
-
-endfunction
-
-map <leader>/ :call CommentOnOneButton()<CR>
+map <leader>/ <Action>(CommentByLineComment)
 
 " map <leader>dra <Action>(Run)
 map <leader>dra <Action>(TriggerPlayInUnity)
